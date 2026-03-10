@@ -3,827 +3,837 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Chính sách quyền riêng tư của ứng dụng Quản Lý Thiết Bị Trường Học. Ứng dụng hoạt động 100% offline và không thu thập dữ liệu cá nhân." />
-  <title>Chính Sách Quyền Riêng Tư – Quản Lý Thiết Bị Trường Học</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-
+  <title>Chính Sách Quyền Riêng Tư – Clinic Manager</title>
   <style>
-    /* ─── Reset & Base ─────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --primary:        #1a73e8;
-      --primary-dark:   #0d47a1;
-      --primary-light:  #e8f0fe;
-      --accent:         #34a853;
-      --warning:        #fbbc04;
-      --danger:         #ea4335;
-      --surface:        #ffffff;
-      --bg:             #f8faff;
-      --text-primary:   #1a1f36;
-      --text-secondary: #4a5568;
-      --text-muted:     #8898a9;
-      --border:         #e2e8f0;
-      --shadow-sm:      0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.05);
-      --shadow-md:      0 4px 16px rgba(0,0,0,.10);
-      --shadow-lg:      0 12px 40px rgba(0,0,0,.13);
-      --radius-sm:      8px;
-      --radius-md:      14px;
-      --radius-lg:      20px;
-      --radius-xl:      28px;
+      --primary: #1a73e8;
+      --primary-dark: #1557b0;
+      --accent: #34a853;
+      --bg: #f8faff;
+      --surface: #ffffff;
+      --border: #e1e8f5;
+      --text: #1f2937;
+      --text-secondary: #6b7280;
+      --shadow: 0 2px 16px rgba(26, 115, 232, 0.08);
     }
 
-    html { scroll-behavior: smooth; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       background: var(--bg);
-      color: var(--text-primary);
-      line-height: 1.7;
+      color: var(--text);
+      line-height: 1.75;
       font-size: 16px;
-      -webkit-font-smoothing: antialiased;
     }
 
-    /* ─── Hero Header ──────────────────────────────────────── */
-    .hero {
-      background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 50%, #1565c0 100%);
+    /* ── Header ── */
+    header {
+      background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
       color: #fff;
-      padding: 64px 24px 80px;
+      padding: 56px 24px 48px;
       text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -60px; right: -60px;
-      width: 320px; height: 320px;
-      background: rgba(255,255,255,.06);
-      border-radius: 50%;
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: -80px; left: -40px;
-      width: 260px; height: 260px;
-      background: rgba(255,255,255,.04);
-      border-radius: 50%;
     }
 
-    .hero-icon {
+    .header-icon {
+      width: 72px;
+      height: 72px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 18px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 80px; height: 80px;
-      background: rgba(255,255,255,.18);
-      border-radius: 24px;
-      margin-bottom: 24px;
-      backdrop-filter: blur(10px);
-      border: 1.5px solid rgba(255,255,255,.25);
+      margin-bottom: 20px;
     }
-    .hero-icon svg { width: 40px; height: 40px; fill: #fff; }
 
-    .hero h1 {
-      font-size: clamp(1.6rem, 4vw, 2.4rem);
-      font-weight: 800;
-      letter-spacing: -.5px;
-      margin-bottom: 12px;
+    .header-icon svg {
+      width: 40px;
+      height: 40px;
+      fill: #ffffff;
     }
-    .hero .tagline {
-      font-size: 1.05rem;
-      opacity: .85;
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    header p.subtitle {
+      font-size: 1rem;
+      opacity: 0.85;
       max-width: 520px;
-      margin: 0 auto 28px;
+      margin: 0 auto;
     }
-    .hero .badges {
+
+    .lang-badge {
+      display: inline-block;
+      margin-top: 18px;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 999px;
+      padding: 4px 16px;
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── Meta bar ── */
+    .meta-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
       display: flex;
-      gap: 10px;
-      justify-content: center;
       flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px;
+      padding: 14px 24px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
     }
-    .badge {
-      display: inline-flex;
+
+    .meta-bar span {
+      display: flex;
       align-items: center;
       gap: 6px;
-      background: rgba(255,255,255,.15);
-      border: 1px solid rgba(255,255,255,.3);
-      border-radius: 100px;
-      padding: 6px 16px;
-      font-size: 13px;
-      font-weight: 500;
-      backdrop-filter: blur(8px);
-    }
-    .badge svg { width: 14px; height: 14px; fill: #fff; }
-
-    /* ─── Wave Divider ─────────────────────────────────────── */
-    .wave {
-      display: block;
-      margin-top: -2px;
-      background: var(--bg);
     }
 
-    /* ─── Layout ───────────────────────────────────────────── */
+    /* ── Main layout ── */
     .container {
-      max-width: 820px;
+      max-width: 860px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 40px 24px 80px;
     }
 
-    /* ─── TOC Card ─────────────────────────────────────────── */
-    .toc-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
+    /* ── Summary card ── */
+    .summary-card {
+      background: linear-gradient(135deg, #e8f4fd 0%, #f0f9ff 100%);
+      border: 1px solid #bee3f8;
+      border-radius: 16px;
       padding: 28px 32px;
-      margin: -36px auto 40px;
-      position: relative;
-      z-index: 10;
-      box-shadow: var(--shadow-lg);
+      margin-bottom: 40px;
     }
-    .toc-card h2 {
-      font-size: .75rem;
+
+    .summary-card h2 {
+      font-size: 1rem;
       font-weight: 700;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
       color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
       margin-bottom: 16px;
     }
-    .toc-list {
-      list-style: none;
+
+    .summary-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-      gap: 8px 16px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
     }
-    .toc-list a {
+
+    .summary-item {
       display: flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      padding: 6px 10px;
-      border-radius: var(--radius-sm);
-      transition: background .18s, color .18s;
+      align-items: flex-start;
+      gap: 10px;
     }
-    .toc-list a:hover {
-      background: var(--primary-light);
-      color: var(--primary);
-    }
-    .toc-num {
-      display: inline-flex;
+
+    .summary-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 2px;
+      display: flex;
       align-items: center;
       justify-content: center;
-      width: 22px; height: 22px;
-      background: var(--primary-light);
-      color: var(--primary);
-      border-radius: 50%;
-      font-size: 11px;
-      font-weight: 700;
-      flex-shrink: 0;
     }
 
-    /* ─── Update Banner ────────────────────────────────────── */
-    .update-banner {
-      background: linear-gradient(90deg, #e8f5e9, #f1f8e9);
-      border: 1px solid #a5d6a7;
-      border-radius: var(--radius-md);
-      padding: 14px 20px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 40px;
-      font-size: 14px;
-      color: #2e7d32;
+    .dot-green { background: #dcfce7; }
+    .dot-blue  { background: #dbeafe; }
+    .dot-orange{ background: #fff7ed; }
+
+    .summary-item p {
+      font-size: 0.9rem;
+      color: var(--text);
       font-weight: 500;
     }
-    .update-banner svg { width: 20px; height: 20px; fill: #43a047; flex-shrink: 0; }
 
-    /* ─── Section Card ─────────────────────────────────────── */
-    .section-card {
+    /* ── Sections ── */
+    .section {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 36px 40px;
-      margin-bottom: 24px;
-      box-shadow: var(--shadow-sm);
-      scroll-margin-top: 24px;
-      transition: box-shadow .2s;
+      border-radius: 16px;
+      margin-bottom: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
     }
-    .section-card:hover { box-shadow: var(--shadow-md); }
 
     .section-header {
       display: flex;
       align-items: center;
-      gap: 16px;
-      margin-bottom: 20px;
+      gap: 14px;
+      padding: 22px 28px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
     }
-    .section-icon {
+
+    .section-number {
+      width: 34px;
+      height: 34px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 48px; height: 48px;
-      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 0.9rem;
       flex-shrink: 0;
     }
-    .section-icon svg { width: 24px; height: 24px; }
 
-    .icon-blue   { background: #e8f0fe; } .icon-blue   svg { fill: #1a73e8; }
-    .icon-green  { background: #e6f4ea; } .icon-green  svg { fill: #34a853; }
-    .icon-orange { background: #fce8e6; } .icon-orange svg { fill: #ea4335; }
-    .icon-purple { background: #f3e8fd; } .icon-purple svg { fill: #9c27b0; }
-    .icon-teal   { background: #e0f7fa; } .icon-teal   svg { fill: #00897b; }
-    .icon-amber  { background: #fff8e1; } .icon-amber  svg { fill: #f9a825; }
-    .icon-indigo { background: #e8eaf6; } .icon-indigo svg { fill: #3949ab; }
-    .icon-pink   { background: #fce4ec; } .icon-pink   svg { fill: #e91e63; }
-
-    .section-title-group h2 {
-      font-size: 1.15rem;
+    .section-title {
+      font-size: 1.05rem;
       font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 2px;
-    }
-    .section-title-group span {
-      font-size: 12px;
-      color: var(--text-muted);
-      font-weight: 500;
+      color: var(--text);
     }
 
-    .section-card p {
-      color: var(--text-secondary);
+    .section-body {
+      padding: 24px 28px;
+    }
+
+    .section-body p {
+      color: var(--text);
       margin-bottom: 14px;
-      font-size: 15px;
     }
-    .section-card p:last-child { margin-bottom: 0; }
 
-    /* ─── Highlight Box ────────────────────────────────────── */
-    .highlight {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      background: var(--primary-light);
-      border-left: 4px solid var(--primary);
-      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-      padding: 14px 18px;
-      margin: 20px 0;
-      font-size: 14.5px;
-      color: #0d47a1;
-      font-weight: 500;
+    .section-body p:last-child {
+      margin-bottom: 0;
     }
-    .highlight svg { width: 20px; height: 20px; fill: var(--primary); flex-shrink: 0; margin-top: 1px; }
 
-    .highlight-green {
-      background: #e6f4ea;
-      border-color: #34a853;
-      color: #1b5e20;
-    }
-    .highlight-green svg { fill: #34a853; }
-
-    /* ─── Pill List ────────────────────────────────────────── */
-    .pill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 14px 0;
-    }
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      padding: 5px 14px;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text-secondary);
-    }
-    .pill svg { width: 13px; height: 13px; fill: var(--primary); }
-
-    /* ─── Data Table ───────────────────────────────────────── */
+    /* ── Tables ── */
     .data-table {
       width: 100%;
       border-collapse: collapse;
-      margin: 18px 0;
-      font-size: 14px;
+      margin: 16px 0;
+      font-size: 0.9rem;
     }
+
     .data-table th {
-      background: var(--bg);
-      color: var(--text-secondary);
-      font-weight: 600;
+      background: #f1f5fb;
       padding: 10px 14px;
       text-align: left;
-      border-bottom: 2px solid var(--border);
+      font-weight: 700;
+      color: var(--text);
+      border: 1px solid var(--border);
     }
+
     .data-table td {
       padding: 10px 14px;
-      border-bottom: 1px solid var(--border);
-      color: var(--text-secondary);
+      border: 1px solid var(--border);
+      color: var(--text);
       vertical-align: top;
     }
-    .data-table tr:last-child td { border-bottom: none; }
-    .data-table tr:hover td { background: #f8faff; }
 
-    .tag-no  { background: #e6f4ea; color: #2e7d32; }
-    .tag-yes { background: #fce8e6; color: #c62828; }
-    .tag {
+    .data-table tr:nth-child(even) td {
+      background: #fafcff;
+    }
+
+    /* ── Badges ── */
+    .badge {
       display: inline-block;
-      padding: 2px 10px;
-      border-radius: 100px;
-      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
       font-weight: 600;
     }
 
-    /* ─── Contact Card ─────────────────────────────────────── */
+    .badge-green {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .badge-red {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .badge-blue {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+
+    /* ── Highlight box ── */
+    .highlight-box {
+      border-radius: 12px;
+      padding: 18px 22px;
+      margin: 16px 0;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .highlight-green {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+    }
+
+    .highlight-blue {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+    }
+
+    .highlight-yellow {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+    }
+
+    .highlight-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .highlight-box p {
+      font-size: 0.92rem;
+      margin: 0 !important;
+      color: var(--text) !important;
+    }
+
+    .highlight-box strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* ── Lists ── */
+    ul.styled {
+      list-style: none;
+      margin: 10px 0;
+    }
+
+    ul.styled li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 6px 0;
+      font-size: 0.93rem;
+      color: var(--text);
+    }
+
+    ul.styled li::before {
+      content: "✓";
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    ul.styled-x li::before {
+      content: "✕";
+      color: #ef4444;
+    }
+
+    /* ── Permission table ── */
+    .permission-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .permission-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .permission-icon-wrap {
+      width: 40px;
+      height: 40px;
+      background: #eff6ff;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.1rem;
+    }
+
+    .permission-details h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .permission-details p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin: 0 !important;
+    }
+
+    /* ── Contact card ── */
     .contact-card {
       background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
-      border-radius: var(--radius-lg);
-      padding: 36px 40px;
+      border-radius: 16px;
+      padding: 28px 32px;
       color: #fff;
-      text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 20px;
     }
-    .contact-card h2 {
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-bottom: 10px;
+
+    .contact-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 16px;
     }
-    .contact-card p {
-      opacity: .85;
-      margin-bottom: 24px;
-      font-size: 15px;
-    }
-    .contact-links {
+
+    .contact-row {
       display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .contact-link {
-      display: inline-flex;
       align-items: center;
-      gap: 8px;
-      background: rgba(255,255,255,.18);
-      border: 1.5px solid rgba(255,255,255,.35);
-      border-radius: var(--radius-sm);
-      padding: 10px 22px;
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 14px;
-      transition: background .2s;
-      backdrop-filter: blur(8px);
+      gap: 12px;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
     }
-    .contact-link:hover { background: rgba(255,255,255,.28); }
-    .contact-link svg { width: 16px; height: 16px; fill: #fff; }
 
-    /* ─── Footer ───────────────────────────────────────────── */
+    .contact-row:last-child { margin-bottom: 0; }
+
+    .contact-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ── Footer ── */
     footer {
+      background: #1f2937;
+      color: #9ca3af;
       text-align: center;
-      padding: 32px 24px 48px;
-      color: var(--text-muted);
-      font-size: 13px;
-      border-top: 1px solid var(--border);
-      background: var(--surface);
+      padding: 28px 24px;
+      font-size: 0.85rem;
     }
-    footer strong { color: var(--text-secondary); }
 
-    /* ─── Responsive ───────────────────────────────────────── */
+    footer a {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+
+    footer strong {
+      color: #f9fafb;
+    }
+
+    /* ── Responsive ── */
     @media (max-width: 600px) {
-      .section-card { padding: 24px 20px; }
-      .toc-card     { padding: 22px 20px; margin-left: 0; margin-right: 0; border-radius: var(--radius-md); }
-      .contact-card { padding: 28px 20px; }
-      .data-table   { font-size: 13px; }
+      header h1 { font-size: 1.5rem; }
+      .section-header { padding: 16px 20px; }
+      .section-body { padding: 18px 20px; }
+      .summary-card { padding: 20px; }
+      .contact-card { padding: 22px 20px; }
     }
   </style>
 </head>
 <body>
 
-<!-- ═══════════════════ HERO ═══════════════════ -->
-<header class="hero">
-  <div class="hero-icon">
-    <!-- Shield icon -->
+<!-- ═══════════════════════════ HEADER ═══════════════════════════ -->
+<header>
+  <div class="header-icon">
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 1L3 5v6c0 5.25 3.75 10.15 9 11.35C17.25 21.15 21 16.25 21 11V5L12 1zm-1 14l-3-3 1.41-1.41L11 12.17l4.59-4.58L17 9l-6 6z"/>
+      <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/>
     </svg>
   </div>
   <h1>Chính Sách Quyền Riêng Tư</h1>
-  <p class="tagline">Quản Lý Thiết Bị Trường Học — Ứng dụng hoạt động hoàn toàn ngoại tuyến, minh bạch và bảo vệ dữ liệu của bạn.</p>
-  <div class="badges">
-    <span class="badge">
-      <svg viewBox="0 0 24 24"><path d="M17 1H7c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm-5 20c-.83 0-1.5-.67-1.5-1.5S11.17 18 12 18s1.5.67 1.5 1.5S12.83 21 12 21z"/></svg>
-      100% Offline
-    </span>
-    <span class="badge">
-      <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM12 17c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM9 8V6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9z"/></svg>
-      Không thu thập dữ liệu
-    </span>
-    <span class="badge">
-      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-      Google Play Compliant
-    </span>
-  </div>
+  <p class="subtitle">Clinic Manager – Ứng dụng quản lý phòng khám</p>
+  <div class="lang-badge">🇻🇳 Tiếng Việt &nbsp;|&nbsp; 🇬🇧 English below</div>
 </header>
 
-<!-- Wave -->
-<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" height="60" xmlns="http://www.w3.org/2000/svg">
-  <path d="M0,60 L0,30 Q360,0 720,30 Q1080,60 1440,30 L1440,60 Z" fill="#f8faff"/>
-</svg>
+<!-- ═══════════════════════════ META BAR ═══════════════════════════ -->
+<div class="meta-bar">
+  <span>📅 Ngày hiệu lực: <strong>10/03/2026</strong></span>
+  <span>🔄 Cập nhật lần cuối: <strong>10/03/2026</strong></span>
+  <span>📦 Phiên bản ứng dụng: <strong>1.0.0</strong></span>
+  <span>📱 Nền tảng: <strong>Android</strong></span>
+</div>
 
-<!-- ═══════════════════ MAIN CONTENT ═══════════════════ -->
-<main class="container">
+<!-- ═══════════════════════════ CONTENT ═══════════════════════════ -->
+<div class="container">
 
-  <!-- TOC -->
-  <div class="toc-card">
-    <h2>Mục lục</h2>
-    <ul class="toc-list">
-      <li><a href="#s1"><span class="toc-num">1</span> Giới thiệu</a></li>
-      <li><a href="#s2"><span class="toc-num">2</span> Thông tin thu thập</a></li>
-      <li><a href="#s3"><span class="toc-num">3</span> Lưu trữ dữ liệu</a></li>
-      <li><a href="#s4"><span class="toc-num">4</span> Quyền truy cập</a></li>
-      <li><a href="#s5"><span class="toc-num">5</span> Bảo mật dữ liệu</a></li>
-      <li><a href="#s6"><span class="toc-num">6</span> Chia sẻ dữ liệu</a></li>
-      <li><a href="#s7"><span class="toc-num">7</span> Quyền của người dùng</a></li>
-      <li><a href="#s8"><span class="toc-num">8</span> Trẻ em</a></li>
-      <li><a href="#s9"><span class="toc-num">9</span> Thay đổi chính sách</a></li>
-      <li><a href="#s10"><span class="toc-num">10</span> Liên hệ</a></li>
-    </ul>
+  <!-- Summary card -->
+  <div class="summary-card">
+    <h2>📋 Tóm tắt nhanh</h2>
+    <div class="summary-grid">
+      <div class="summary-item">
+        <div class="summary-dot dot-green">✅</div>
+        <p>Không thu thập dữ liệu cá nhân người dùng</p>
+      </div>
+      <div class="summary-item">
+        <div class="summary-dot dot-green">✅</div>
+        <p>Toàn bộ dữ liệu lưu offline trên thiết bị</p>
+      </div>
+      <div class="summary-item">
+        <div class="summary-dot dot-green">✅</div>
+        <p>Không kết nối internet, không có server</p>
+      </div>
+      <div class="summary-item">
+        <div class="summary-dot dot-green">✅</div>
+        <p>Không có quảng cáo, không theo dõi</p>
+      </div>
+      <div class="summary-item">
+        <div class="summary-dot dot-blue">ℹ️</div>
+        <p>Quyền truy cập bộ nhớ chỉ để sao lưu/khôi phục</p>
+      </div>
+      <div class="summary-item">
+        <div class="summary-dot dot-orange">📌</div>
+        <p>Dành cho nhân viên phòng khám, không phải bệnh nhân</p>
+      </div>
+    </div>
   </div>
 
-  <!-- Update banner -->
-  <div class="update-banner">
-    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-    <span><strong>Cập nhật lần cuối:</strong> Ngày 08 tháng 03 năm 2026 &nbsp;·&nbsp; Phiên bản ứng dụng: 1.0.0</span>
+  <!-- Section 1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <div class="section-title">Giới thiệu về ứng dụng</div>
+    </div>
+    <div class="section-body">
+      <p><strong>Clinic Manager</strong> là ứng dụng quản lý hoạt động nội bộ phòng khám, được thiết kế dành cho <strong>nhân viên quản lý phòng khám</strong> (không phải bệnh nhân). Ứng dụng hỗ trợ:</p>
+      <ul class="styled">
+        <li>Quản lý thiết bị y tế và lịch bảo trì</li>
+        <li>Quản lý kho thuốc: nhập hàng, xuất hàng, theo dõi hạn sử dụng</li>
+        <li>Cảnh báo thuốc sắp hết hạn, thiết bị cần bảo trì</li>
+        <li>Sao lưu và khôi phục dữ liệu</li>
+      </ul>
+      <div class="highlight-box highlight-blue">
+        <span class="highlight-icon">ℹ️</span>
+        <p>Ứng dụng hoạt động <strong>hoàn toàn offline</strong> – không cần đăng nhập tài khoản, không kết nối internet, không lưu trữ dữ liệu trên bất kỳ máy chủ nào.</p>
+      </div>
+    </div>
   </div>
 
-  <!-- ─── 1. Giới thiệu ─── -->
-  <section class="section-card" id="s1">
+  <!-- Section 2 -->
+  <div class="section">
     <div class="section-header">
-      <div class="section-icon icon-blue">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-      </div>
-      <div class="section-title-group">
-        <h2>1. Giới Thiệu</h2>
-        <span>Về ứng dụng và chính sách này</span>
-      </div>
+      <div class="section-number">2</div>
+      <div class="section-title">Dữ liệu chúng tôi lưu trữ</div>
     </div>
-    <p>
-      Ứng dụng <strong>Quản Lý Thiết Bị Trường Học</strong> (<em>School Asset Manager</em>) được phát triển nhằm giúp các trường học, cơ sở giáo dục quản lý thiết bị, tài sản, phòng học, theo dõi mượn–trả và công tác sửa chữa một cách hiệu quả và thuận tiện.
-    </p>
-    <p>
-      Tài liệu này mô tả rõ ràng cách chúng tôi xử lý dữ liệu — hay đúng hơn là <strong>không xử lý dữ liệu của bạn</strong> — vì ứng dụng được thiết kế hoạt động hoàn toàn ngoại tuyến (offline). Bằng cách sử dụng ứng dụng, bạn đồng ý với các điều khoản được nêu dưới đây.
-    </p>
-    <div class="highlight highlight-green">
-      <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.25 3.75 10.15 9 11.35C17.25 21.15 21 16.25 21 11V5L12 1zm-1 14l-3-3 1.41-1.41L11 12.17l4.59-4.58L17 9l-6 6z"/></svg>
-      Cam kết cốt lõi: Ứng dụng <strong>không kết nối Internet</strong>, <strong>không gửi</strong> bất kỳ dữ liệu nào ra ngoài thiết bị của bạn và <strong>không yêu cầu tài khoản</strong> để sử dụng.
-    </div>
-  </section>
+    <div class="section-body">
+      <p>Ứng dụng lưu trữ dữ liệu nghiệp vụ phòng khám trực tiếp trên thiết bị của bạn thông qua cơ sở dữ liệu SQLite cục bộ. <strong>Không có dữ liệu nào được truyền ra ngoài thiết bị.</strong></p>
 
-  <!-- ─── 2. Thông tin thu thập ─── -->
-  <section class="section-card" id="s2">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Loại dữ liệu</th>
+            <th>Thông tin lưu trữ</th>
+            <th>Mục đích</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Thiết bị y tế</strong></td>
+            <td>Tên, mã, danh mục, nhà sản xuất, ngày mua, giá, vị trí, trạng thái</td>
+            <td>Quản lý tài sản phòng khám</td>
+          </tr>
+          <tr>
+            <td><strong>Lịch sử bảo trì</strong></td>
+            <td>Ngày bảo trì, mô tả, chi phí, tên kỹ thuật viên</td>
+            <td>Theo dõi bảo trì thiết bị</td>
+          </tr>
+          <tr>
+            <td><strong>Danh mục thuốc</strong></td>
+            <td>Tên thuốc, mã, loại, nhà sản xuất, đơn vị, giá nhập, giá bán</td>
+            <td>Quản lý danh mục dược phẩm</td>
+          </tr>
+          <tr>
+            <td><strong>Tồn kho thuốc</strong></td>
+            <td>Số lô, số lượng, hạn sử dụng</td>
+            <td>Theo dõi tồn kho</td>
+          </tr>
+          <tr>
+            <td><strong>Nhập/xuất thuốc</strong></td>
+            <td>Tên nhà cung cấp, ngày, số lượng, giá, người xuất, ghi chú</td>
+            <td>Quản lý giao dịch kho</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box highlight-green">
+        <span class="highlight-icon">✅</span>
+        <p><strong>Không có dữ liệu bệnh nhân:</strong> Ứng dụng không lưu trữ bất kỳ thông tin nào về bệnh nhân, hồ sơ y tế, kết quả xét nghiệm hay thông tin cá nhân của người dùng cuối.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="section">
     <div class="section-header">
-      <div class="section-icon icon-teal">
-        <svg viewBox="0 0 24 24"><path d="M20 6h-2.18c.07-.44.18-.88.18-1.33C18 2.54 15.46 0 12.33 0c-1.7 0-3.23.94-4.1 2.44L12 7 6.5 11.5C6.19 10.71 6 9.87 6 9H4c0 4.42 3.58 8 8 8s8-3.58 8-8V8c0-1.1-.9-2-2-2z"/></svg>
-      </div>
-      <div class="section-title-group">
-        <h2>2. Thông Tin Chúng Tôi Không Thu Thập</h2>
-        <span>Dữ liệu cá nhân và sử dụng</span>
-      </div>
+      <div class="section-number">3</div>
+      <div class="section-title">Dữ liệu KHÔNG được thu thập</div>
     </div>
-    <p>Ứng dụng <strong>Quản Lý Thiết Bị Trường Học</strong> <u>không thu thập, không ghi lại và không truyền</u> bất kỳ thông tin cá nhân nào, bao gồm:</p>
-
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th>Loại dữ liệu</th>
-          <th>Thu thập?</th>
-          <th>Ghi chú</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Tên, email, số điện thoại</td>
-          <td><span class="tag tag-no">❌ Không</span></td>
-          <td>Không yêu cầu đăng ký</td>
-        </tr>
-        <tr>
-          <td>Vị trí địa lý (GPS)</td>
-          <td><span class="tag tag-no">❌ Không</span></td>
-          <td>Không yêu cầu quyền vị trí</td>
-        </tr>
-        <tr>
-          <td>Thông tin thiết bị / IMEI</td>
-          <td><span class="tag tag-no">❌ Không</span></td>
-          <td>Không nhận dạng thiết bị</td>
-        </tr>
-        <tr>
-          <td>Nhật ký sử dụng (analytics)</td>
-          <td><span class="tag tag-no">❌ Không</span></td>
-          <td>Không tích hợp Firebase/GA</td>
-        </tr>
-        <tr>
-          <td>Cookie / Tracking</td>
-          <td><span class="tag tag-no">❌ Không</span></td>
-          <td>Ứng dụng native, không dùng web</td>
-        </tr>
-        <tr>
-          <td>Dữ liệu tài sản do bạn nhập</td>
-          <td><span class="tag tag-yes">💾 Chỉ lưu cục bộ</span></td>
-          <td>Lưu trên thiết bị của bạn, không gửi đi</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="highlight">
-      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-      Dữ liệu duy nhất mà ứng dụng xử lý là thông tin tài sản, thiết bị, phòng học và lịch mượn–trả mà <strong>chính bạn nhập vào</strong>. Dữ liệu này chỉ tồn tại trên thiết bị của bạn.
+    <div class="section-body">
+      <p>Chúng tôi cam kết <strong>không thu thập</strong> bất kỳ thông tin nào dưới đây:</p>
+      <ul class="styled styled-x">
+        <li>Tên, email, số điện thoại hay bất kỳ thông tin định danh cá nhân</li>
+        <li>Dữ liệu vị trí (GPS) của thiết bị</li>
+        <li>Hình ảnh, danh bạ, lịch hoặc file phương tiện</li>
+        <li>Thông tin thiết bị (IMEI, địa chỉ MAC)</li>
+        <li>Lịch sử duyệt web hoặc hoạt động trong ứng dụng</li>
+        <li>Dữ liệu phân tích (analytics) hay báo cáo sự cố (crash reports)</li>
+        <li>Thông tin thanh toán</li>
+        <li>Hồ sơ bệnh án hay thông tin sức khỏe cá nhân</li>
+      </ul>
     </div>
-  </section>
+  </div>
 
-  <!-- ─── 3. Lưu trữ ─── -->
-  <section class="section-card" id="s3">
+  <!-- Section 4 -->
+  <div class="section">
     <div class="section-header">
-      <div class="section-icon icon-indigo">
-        <svg viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
-      </div>
-      <div class="section-title-group">
-        <h2>3. Lưu Trữ Dữ Liệu</h2>
-        <span>Nơi dữ liệu được lưu giữ</span>
-      </div>
+      <div class="section-number">4</div>
+      <div class="section-title">Quyền truy cập thiết bị</div>
     </div>
-    <p>
-      Toàn bộ dữ liệu do người dùng nhập vào (danh sách thiết bị, phòng học, thông tin mượn–trả, lịch sửa chữa, v.v.) được lưu trữ trong <strong>cơ sở dữ liệu SQLite cục bộ</strong> trên chính thiết bị của bạn.
-    </p>
-    <p>
-      Dữ liệu này <strong>không được đồng bộ</strong> lên bất kỳ máy chủ đám mây nào, không được sao lưu tự động qua Internet và không được chia sẻ với bất kỳ bên thứ ba nào.
-    </p>
-    <div class="pill-list">
-      <span class="pill">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-        SQLite cục bộ
-      </span>
-      <span class="pill">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-        Không gửi qua Internet
-      </span>
-      <span class="pill">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-        Không cloud sync
-      </span>
-      <span class="pill">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-        Dữ liệu thuộc về bạn
-      </span>
-    </div>
-    <p>
-      Khi bạn <strong>gỡ cài đặt</strong> ứng dụng, toàn bộ dữ liệu liên quan cũng sẽ bị xóa vĩnh viễn khỏi thiết bị theo cơ chế tiêu chuẩn của hệ điều hành Android.
-    </p>
-  </section>
+    <div class="section-body">
+      <p>Ứng dụng chỉ yêu cầu các quyền tối thiểu cần thiết cho chức năng sao lưu dữ liệu:</p>
 
-  <!-- ─── 4. Quyền truy cập ─── -->
-  <section class="section-card" id="s4">
+      <div class="permission-item">
+        <div class="permission-icon-wrap">💾</div>
+        <div class="permission-details">
+          <h4>READ_EXTERNAL_STORAGE / WRITE_EXTERNAL_STORAGE</h4>
+          <p>Cho phép ứng dụng xuất file sao lưu cơ sở dữ liệu ra thư mục Tải xuống (Downloads) và đọc file để khôi phục dữ liệu. Chỉ sử dụng khi người dùng chủ động thực hiện thao tác sao lưu/khôi phục.</p>
+        </div>
+      </div>
+
+      <div class="permission-item">
+        <div class="permission-icon-wrap">📂</div>
+        <div class="permission-details">
+          <h4>Chọn file (File Picker)</h4>
+          <p>Cho phép người dùng chọn file sao lưu (.db) từ bộ nhớ thiết bị để khôi phục dữ liệu. Ứng dụng chỉ đọc file được người dùng chỉ định, không duyệt hay đọc các file khác.</p>
+        </div>
+      </div>
+
+      <div class="highlight-box highlight-yellow">
+        <span class="highlight-icon">⚠️</span>
+        <p>Ứng dụng <strong>không yêu cầu</strong> quyền truy cập camera, micro, vị trí, danh bạ, lịch hay bất kỳ quyền nhạy cảm nào khác.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 5 -->
+  <div class="section">
     <div class="section-header">
-      <div class="section-icon icon-orange">
-        <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM12 17c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM9 8V6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9z"/></svg>
-      </div>
-      <div class="section-title-group">
-        <h2>4. Quyền Truy Cập Hệ Thống</h2>
-        <span>Permissions ứng dụng yêu cầu</span>
-      </div>
+      <div class="section-number">5</div>
+      <div class="section-title">Chia sẻ dữ liệu với bên thứ ba</div>
     </div>
-    <p>Ứng dụng yêu cầu một số quyền hệ thống tối thiểu để hoạt động đúng chức năng:</p>
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th>Quyền (Permission)</th>
-          <th>Mục đích sử dụng</th>
-          <th>Gửi dữ liệu ra ngoài?</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>READ/WRITE_EXTERNAL_STORAGE</strong></td>
-          <td>Xuất báo cáo, sao lưu dữ liệu ra file (nếu có)</td>
-          <td><span class="tag tag-no">❌ Không</span></td>
-        </tr>
-        <tr>
-          <td><strong>VIBRATE</strong></td>
-          <td>Phản hồi xúc giác khi tương tác</td>
-          <td><span class="tag tag-no">❌ Không</span></td>
-        </tr>
-      </tbody>
-    </table>
-    <p>Ứng dụng <strong>không yêu cầu</strong> các quyền nhạy cảm như: camera, micro, vị trí, danh bạ, SMS, cuộc gọi hay quyền quản trị thiết bị.</p>
-  </section>
+    <div class="section-body">
+      <p>Chúng tôi <strong>không chia sẻ, bán, cho thuê hay tiết lộ</strong> bất kỳ dữ liệu nào cho bên thứ ba. Ứng dụng không tích hợp:</p>
+      <ul class="styled styled-x">
+        <li>Dịch vụ phân tích (Google Analytics, Firebase Analytics, v.v.)</li>
+        <li>Mạng quảng cáo</li>
+        <li>Dịch vụ lưu trữ đám mây</li>
+        <li>SDK theo dõi hành vi người dùng</li>
+        <li>Dịch vụ đăng nhập bên thứ ba (Google, Facebook, v.v.)</li>
+      </ul>
 
-  <!-- ─── 5. Bảo mật ─── -->
-  <section class="section-card" id="s5">
+      <p>Các thư viện được sử dụng trong ứng dụng và mục đích của chúng:</p>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Thư viện</th>
+            <th>Mục đích</th>
+            <th>Thu thập dữ liệu</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>sqflite</code></td>
+            <td>Cơ sở dữ liệu SQLite cục bộ</td>
+            <td><span class="badge badge-green">Không</span></td>
+          </tr>
+          <tr>
+            <td><code>path_provider</code></td>
+            <td>Truy cập thư mục hệ thống</td>
+            <td><span class="badge badge-green">Không</span></td>
+          </tr>
+          <tr>
+            <td><code>file_picker</code></td>
+            <td>Chọn file sao lưu</td>
+            <td><span class="badge badge-green">Không</span></td>
+          </tr>
+          <tr>
+            <td><code>fl_chart</code></td>
+            <td>Biểu đồ thống kê trực quan</td>
+            <td><span class="badge badge-green">Không</span></td>
+          </tr>
+          <tr>
+            <td><code>intl</code></td>
+            <td>Định dạng ngày tháng</td>
+            <td><span class="badge badge-green">Không</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Section 6 -->
+  <div class="section">
     <div class="section-header">
-      <div class="section-icon icon-green">
-        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.25 3.75 10.15 9 11.35C17.25 21.15 21 16.25 21 11V5L12 1zm-1 14l-3-3 1.41-1.41L11 12.17l4.59-4.58L17 9l-6 6z"/></svg>
-      </div>
-      <div class="section-title-group">
-        <h2>5. Bảo Mật Dữ Liệu</h2>
-        <span>Cách chúng tôi bảo vệ dữ liệu của bạn</span>
+      <div class="section-number">6</div>
+      <div class="section-title">Bảo mật dữ liệu</div>
+    </div>
+    <div class="section-body">
+      <p>Vì toàn bộ dữ liệu được lưu trữ cục bộ trên thiết bị của bạn, tính bảo mật phụ thuộc vào chính sách bảo mật của thiết bị Android mà bạn sử dụng:</p>
+      <ul class="styled">
+        <li>Dữ liệu ứng dụng được bảo vệ bởi hệ thống sandbox của Android</li>
+        <li>File cơ sở dữ liệu chỉ có thể được truy cập bởi ứng dụng (hoặc khi thiết bị được root)</li>
+        <li>Chúng tôi khuyến nghị đặt mã khóa màn hình cho thiết bị để bảo vệ dữ liệu</li>
+        <li>Thực hiện sao lưu định kỳ để tránh mất dữ liệu khi thay thiết bị</li>
+      </ul>
+      <div class="highlight-box highlight-blue">
+        <span class="highlight-icon">🔐</span>
+        <p>Vì không có server, <strong>không có nguy cơ rò rỉ dữ liệu qua mạng</strong>. Dữ liệu của bạn luôn ở trên thiết bị của bạn.</p>
       </div>
     </div>
-    <p>
-      Vì ứng dụng hoạt động hoàn toàn ngoại tuyến, nguy cơ rò rỉ dữ liệu qua mạng được loại bỏ hoàn toàn. Dữ liệu của bạn được bảo vệ bởi:
-    </p>
-    <div class="pill-list">
-      <span class="pill">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-        Bộ nhớ sandbox của Android
-      </span>
-      <span class="pill">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-        Không kết nối Internet
-      </span>
-      <span class="pill">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-        Không SDK bên thứ ba có thể thu thập dữ liệu
-      </span>
-      <span class="pill">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-        Ứng dụng cập nhật thường xuyên
-      </span>
-    </div>
-    <p>
-      Chúng tôi khuyến nghị bạn bảo vệ thiết bị của mình bằng mã PIN / sinh trắc học và chỉ cài đặt ứng dụng từ nguồn <strong>Google Play Store</strong> chính thức để đảm bảo tính toàn vẹn của ứng dụng.
-    </p>
-  </section>
+  </div>
 
-  <!-- ─── 6. Chia sẻ ─── -->
-  <section class="section-card" id="s6">
+  <!-- Section 7 -->
+  <div class="section">
     <div class="section-header">
-      <div class="section-icon icon-purple">
-        <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
-      </div>
-      <div class="section-title-group">
-        <h2>6. Chia Sẻ Dữ Liệu Với Bên Thứ Ba</h2>
-        <span>Chúng tôi không bán hay chia sẻ dữ liệu</span>
-      </div>
+      <div class="section-number">7</div>
+      <div class="section-title">Quyền của người dùng</div>
     </div>
-    <p>
-      Chúng tôi <strong>không bán, không cho thuê, không trao đổi</strong> và không chia sẻ bất kỳ dữ liệu nào của người dùng với bất kỳ bên thứ ba nào, bao gồm:
-    </p>
-    <div class="pill-list">
-      <span class="pill">Công ty quảng cáo</span>
-      <span class="pill">Nhà cung cấp phân tích (analytics)</span>
-      <span class="pill">Cơ quan chính phủ (trừ khi có yêu cầu pháp lý)</span>
-      <span class="pill">Đối tác kinh doanh</span>
+    <div class="section-body">
+      <p>Vì dữ liệu thuộc hoàn toàn về người dùng và lưu trên thiết bị, bạn có toàn quyền kiểm soát:</p>
+      <ul class="styled">
+        <li><strong>Quyền truy cập:</strong> Xem toàn bộ dữ liệu trực tiếp trong ứng dụng</li>
+        <li><strong>Quyền chỉnh sửa:</strong> Sửa đổi hoặc cập nhật bất kỳ thông tin nào</li>
+        <li><strong>Quyền xóa:</strong> Xóa từng bản ghi hoặc gỡ cài đặt ứng dụng để xóa toàn bộ</li>
+        <li><strong>Quyền xuất:</strong> Sao lưu toàn bộ dữ liệu ra file .db bằng tính năng Backup</li>
+        <li><strong>Quyền di chuyển:</strong> Chuyển dữ liệu sang thiết bị khác thông qua tính năng Restore</li>
+      </ul>
     </div>
-    <p>
-      Ứng dụng không tích hợp bất kỳ SDK quảng cáo hay phân tích hành vi người dùng nào. Không có quảng cáo trong ứng dụng.
-    </p>
-  </section>
+  </div>
 
-  <!-- ─── 7. Quyền của người dùng ─── -->
-  <section class="section-card" id="s7">
+  <!-- Section 8 -->
+  <div class="section">
     <div class="section-header">
-      <div class="section-icon icon-amber">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
-      </div>
-      <div class="section-title-group">
-        <h2>7. Quyền Của Người Dùng</h2>
-        <span>Bạn hoàn toàn kiểm soát dữ liệu của mình</span>
+      <div class="section-number">8</div>
+      <div class="section-title">Đối tượng sử dụng (Trẻ em)</div>
+    </div>
+    <div class="section-body">
+      <div class="highlight-box highlight-yellow">
+        <span class="highlight-icon">👶</span>
+        <p><strong>Ứng dụng không dành cho trẻ em.</strong> Clinic Manager được thiết kế dành riêng cho nhân viên phòng khám và người lớn trong lĩnh vực y tế. Chúng tôi không cố ý thu thập thông tin từ trẻ em dưới 13 tuổi.</p>
       </div>
     </div>
-    <p>Vì dữ liệu được lưu trữ hoàn toàn trên thiết bị của bạn, bạn có toàn quyền:</p>
-    <div class="pill-list">
-      <span class="pill">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-        Xem toàn bộ dữ liệu trong app
-      </span>
-      <span class="pill">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-        Chỉnh sửa / xóa bất kỳ mục nào
-      </span>
-      <span class="pill">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-        Xóa toàn bộ dữ liệu bằng cách gỡ app
-      </span>
-      <span class="pill">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-        Đặt lại cài đặt ứng dụng
-      </span>
-    </div>
-    <p>
-      Bạn không cần liên hệ với chúng tôi để thực hiện bất kỳ thao tác nào ở trên vì toàn bộ quyền kiểm soát nằm ngay trong tay bạn.
-    </p>
-  </section>
+  </div>
 
-  <!-- ─── 8. Trẻ em ─── -->
-  <section class="section-card" id="s8">
+  <!-- Section 9 -->
+  <div class="section">
     <div class="section-header">
-      <div class="section-icon icon-pink">
-        <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3z"/></svg>
-      </div>
-      <div class="section-title-group">
-        <h2>8. Đối Tượng Người Dùng &amp; Trẻ Em</h2>
-        <span>Quy định liên quan đến trẻ em</span>
-      </div>
+      <div class="section-number">9</div>
+      <div class="section-title">Thay đổi chính sách</div>
     </div>
-    <p>
-      Ứng dụng <strong>Quản Lý Thiết Bị Trường Học</strong> được thiết kế dành cho <strong>cán bộ, nhân viên và quản lý tại các cơ sở giáo dục</strong> — không phải cho trẻ em sử dụng trực tiếp.
-    </p>
-    <p>
-      Ứng dụng không chủ đích thu thập bất kỳ thông tin nào từ trẻ em dưới 13 tuổi. Vì ứng dụng không thu thập dữ liệu cá nhân từ bất kỳ ai, quy định này được tuân thủ một cách tự nhiên.
-    </p>
-    <div class="highlight">
-      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-      Phù hợp với <strong>Children's Online Privacy Protection Act (COPPA)</strong> và các quy định bảo vệ trẻ em tương đương tại Việt Nam (Luật Trẻ em 2016).
+    <div class="section-body">
+      <p>Chúng tôi có thể cập nhật Chính sách Quyền riêng tư này theo thời gian khi thêm tính năng mới hoặc thay đổi cách hoạt động của ứng dụng. Khi có thay đổi:</p>
+      <ul class="styled">
+        <li>Ngày "Cập nhật lần cuối" tại đầu trang sẽ được thay đổi</li>
+        <li>Các thay đổi quan trọng sẽ được thông báo trong phần mô tả cập nhật trên Google Play Store</li>
+        <li>Việc tiếp tục sử dụng ứng dụng sau ngày cập nhật đồng nghĩa với việc bạn chấp nhận chính sách mới</li>
+      </ul>
     </div>
-  </section>
+  </div>
 
-  <!-- ─── 9. Thay đổi ─── -->
-  <section class="section-card" id="s9">
-    <div class="section-header">
-      <div class="section-icon icon-teal">
-        <svg viewBox="0 0 24 24"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
-      </div>
-      <div class="section-title-group">
-        <h2>9. Thay Đổi Chính Sách</h2>
-        <span>Cách chúng tôi thông báo thay đổi</span>
-      </div>
-    </div>
-    <p>
-      Chúng tôi có thể cập nhật Chính Sách Quyền Riêng Tư này theo thời gian để phản ánh các thay đổi trong chức năng ứng dụng hoặc yêu cầu pháp lý. Mọi thay đổi sẽ được:
-    </p>
-    <div class="pill-list">
-      <span class="pill">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-        Đăng tải trên trang này với ngày cập nhật mới
-      </span>
-      <span class="pill">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-        Ghi chú trong phần mô tả cập nhật trên Google Play
-      </span>
-    </div>
-    <p>
-      Việc tiếp tục sử dụng ứng dụng sau khi chính sách được cập nhật đồng nghĩa với việc bạn chấp nhận phiên bản mới của chính sách. Nếu bạn không đồng ý, hãy gỡ cài đặt ứng dụng.
-    </p>
-    <p>
-      Ngày hiệu lực của chính sách hiện tại: <strong>08/03/2026</strong>.
-    </p>
-  </section>
-
-  <!-- ─── 10. Liên hệ ─── -->
-  <section class="section-card" id="s10">
-    <div class="section-header">
-      <div class="section-icon icon-blue">
-        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-      </div>
-      <div class="section-title-group">
-        <h2>10. Thông Tin Liên Hệ</h2>
-        <span>Hỗ trợ và phản hồi</span>
-      </div>
-    </div>
-    <p>
-      Nếu bạn có bất kỳ câu hỏi, ý kiến hoặc mối quan tâm nào liên quan đến Chính Sách Quyền Riêng Tư này, vui lòng liên hệ với chúng tôi qua:
-    </p>
-    <div class="pill-list">
-      <span class="pill">
-        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-        Email: support@schoolassetmanager.app
-      </span>
-    </div>
-    <p>
-      Chúng tôi cam kết phản hồi trong vòng <strong>3 ngày làm việc</strong> kể từ khi nhận được yêu cầu hợp lệ.
-    </p>
-    <div class="highlight highlight-green">
-      <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.25 3.75 10.15 9 11.35C17.25 21.15 21 16.25 21 11V5L12 1zm-1 14l-3-3 1.41-1.41L11 12.17l4.59-4.58L17 9l-6 6z"/></svg>
-      Chúng tôi trân trọng sự tin tưởng của bạn. Bảo vệ quyền riêng tư là ưu tiên hàng đầu trong quá trình phát triển ứng dụng.
-    </div>
-  </section>
-
-  <!-- Contact CTA -->
+  <!-- Section 10 – Contact -->
   <div class="contact-card">
-    <h2>Câu hỏi về quyền riêng tư?</h2>
-    <p>Chúng tôi luôn sẵn sàng giải đáp mọi thắc mắc của bạn về cách ứng dụng xử lý dữ liệu.</p>
-    <div class="contact-links">
-      <a href="mailto:support@schoolassetmanager.app" class="contact-link">
-        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-        Gửi email
-      </a>
-      <a href="https://play.google.com" target="_blank" rel="noopener" class="contact-link">
-        <svg viewBox="0 0 24 24"><path d="M3 18.5v-13c0-.83.97-1.3 1.6-.8l11 6.5c.57.34.57 1.16 0 1.5l-11 6.5C3.97 19.8 3 19.33 3 18.5z"/></svg>
-        Google Play Store
-      </a>
+    <h3>📬 Liên hệ hỗ trợ</h3>
+    <p style="margin-bottom: 16px; opacity: 0.9; font-size: 0.93rem;">Nếu bạn có bất kỳ câu hỏi nào về chính sách quyền riêng tư hoặc cách ứng dụng xử lý dữ liệu, vui lòng liên hệ với chúng tôi:</p>
+    <div class="contact-row">
+      <div class="contact-icon">📧</div>
+      <span><strong>Email:</strong> &nbsp;hoangcuong123th@gmail.com</span>
+    </div>
+    <div class="contact-row">
+      <div class="contact-icon">📱</div>
+      <span><strong>Google Play:</strong> &nbsp;Clinic Manager – Quản lý phòng khám</span>
     </div>
   </div>
 
-</main>
+  <!-- ════════════════════════════════════════════════════════
+       ENGLISH VERSION
+       ════════════════════════════════════════════════════════ -->
 
-<!-- ═══════════════════ FOOTER ═══════════════════ -->
+  <div style="border-top: 3px solid var(--border); margin: 40px 0 32px; text-align: center;">
+    <span style="background: var(--bg); padding: 0 16px; color: var(--text-secondary); font-size: 0.9rem; position: relative; top: -14px;">
+      🇬🇧 English Version
+    </span>
+  </div>
+
+  <div class="summary-card">
+    <h2>📋 Quick Summary</h2>
+    <div class="summary-grid">
+      <div class="summary-item">
+        <div class="summary-dot dot-green">✅</div>
+        <p>No personal data collected</p>
+      </div>
+      <div class="summary-item">
+        <div class="summary-dot dot-green">✅</div>
+        <p>All data stored offline on device</p>
+      </div>
+      <div class="summary-item">
+        <div class="summary-dot dot-green">✅</div>
+        <p>No internet connection required</p>
+      </div>
+      <div class="summary-item">
+        <div class="summary-dot dot-green">✅</div>
+        <p>No ads, no tracking, no analytics</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number" style="background:#34a853;">EN</div>
+      <div class="section-title">Privacy Policy – English</div>
+    </div>
+    <div class="section-body">
+      <p><strong>Effective Date:</strong> March 10, 2026 &nbsp;|&nbsp; <strong>App Version:</strong> 1.0.0</p>
+
+      <h3 style="margin: 22px 0 10px; font-size: 1rem;">1. Overview</h3>
+      <p><strong>Clinic Manager</strong> is an offline clinic operations management app for Android, designed for clinic administrative staff to manage medical equipment and medicine inventory. This Privacy Policy explains how the app handles information.</p>
+
+      <h3 style="margin: 22px 0 10px; font-size: 1rem;">2. Data Collection</h3>
+      <p>Clinic Manager <strong>does not collect, transmit, or share any personal data</strong>. All operational data (equipment records, medicine inventory, maintenance logs) is stored exclusively on your device using a local SQLite database and never leaves your device.</p>
+
+      <div class="highlight-box highlight-green">
+        <span class="highlight-icon">✅</span>
+        <p><strong>No patient data:</strong> The app does not store any patient information, medical records, or personal health data of any kind.</p>
+      </div>
+
+      <h3 style="margin: 22px 0 10px; font-size: 1rem;">3. Permissions Used</h3>
+      <p>The app requests storage permissions solely for the backup and restore feature (exporting/importing the local database file). No other permissions are requested.</p>
+
+      <h3 style="margin: 22px 0 10px; font-size: 1rem;">4. Third-Party Services</h3>
+      <p>The app does not integrate any third-party analytics, advertising, crash reporting, or cloud storage services. All libraries used are open-source utilities that operate entirely offline.</p>
+
+      <h3 style="margin: 22px 0 10px; font-size: 1rem;">5. Children's Privacy</h3>
+      <p>This app is not directed to children under the age of 13. It is intended solely for adult clinic staff.</p>
+
+      <h3 style="margin: 22px 0 10px; font-size: 1rem;">6. Changes to This Policy</h3>
+      <p>We may update this Privacy Policy when new features are added. The "Last updated" date will be revised accordingly. Continued use of the app after updates constitutes acceptance of the revised policy.</p>
+
+      <h3 style="margin: 22px 0 10px; font-size: 1rem;">7. Contact</h3>
+      <p>If you have any questions about this Privacy Policy, please contact us at: <strong>hoangcuong123th@gmail.com</strong></p>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
 <footer>
   <p>
-    &copy; 2026 <strong>Quản Lý Thiết Bị Trường Học</strong> · School Asset Manager
-    <br />
-    Chính sách có hiệu lực từ ngày <strong>08/03/2026</strong> · Phiên bản 1.0.0
+    <strong>Clinic Manager</strong> – Ứng dụng quản lý phòng khám
+  </p>
+  <p style="margin-top: 6px;">
+    © 2026 Clinic Manager. All rights reserved.
+    &nbsp;|&nbsp;
+    Chính sách này có hiệu lực từ ngày <strong>10/03/2026</strong>
   </p>
 </footer>
 
